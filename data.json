@@ -1,0 +1,12 @@
+[
+  { "id": 1, "genre": "thriller" },
+  { "id": 2, "genre": "comedy" },
+  { "id": 3, "genre": "action" },
+  { "id": 4, "genre": "drama" },
+  { "id": 5, "genre": "horror" },
+  { "id": 6, "genre": "romance" },
+  { "id": 7, "genre": "sci-fi" },
+  { "id": 8, "genre": "fantasy" },
+  { "id": 9, "genre": "mystery" },
+  { "id": 10, "genre": "animation" }
+]

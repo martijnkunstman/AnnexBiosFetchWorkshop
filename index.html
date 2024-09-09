@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voorbeeld fetch</title>
+  </head>
+  <body>
+    <h1>Voorbeeld laden JSON via fetch voor het vullen van een select.</h1>
+    <select id="select" onchange="loadMovie()"></select>
+    <div id="output"></div>
+    <script>
+      //----------------------------------------------------------------
+      // Laad de data.json en vul de select met de genre's
+      //----------------------------------------------------------------
+
+      fetch("data.json")
+        .then((response) => response.json())
+        .then((data) => {
+          const select = document.getElementById("select");
+          data.forEach((item) => {
+            const option = document.createElement("option");
+            option.value = item.id;
+            option.text = item.genre;
+            select.appendChild(option);
+          });
+        });
+      //----------------------------------------------------------------
+
+      function loadMovie() {
+        //----------------------------------------------------------------
+        // Binnen het AnnexBios project gebruik je hiervoor de API...
+        //----------------------------------------------------------------
+
+        const select = document.getElementById("select");
+        const id = select.value;
+        fetch("movies.json")
+          .then((response) => response.json())
+          .then((data) => {
+            const movies = data.filter((movie) => movie.genre == id);
+            console.log(movies);
+            document.getElementById("output").innerHTML = "";
+            movies.map((movie) => {
+              document.getElementById(
+                "output"
+              ).innerHTML += `<h2>${movie.title}</h2>`;
+            });
+          });
+      }
+      //----------------------------------------------------------------
+    </script>
+  </body>
+</html>
